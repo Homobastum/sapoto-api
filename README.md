@@ -13,6 +13,5 @@ Get up and running with our Ticket Manager API:
 packager that will transform your TS code on-the-fly:
 ```
 npm install
-npm start
 ```
 2. Launch serve.bat !
