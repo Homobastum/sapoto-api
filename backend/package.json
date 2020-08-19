@@ -1,0 +1,33 @@
+{
+  "name": "sapoto-api",
+  "version": "1.0.0",
+  "description": "Testing a REST API with TypeScript / Node.js / Express.js / MongoDB",
+  "main": "./build/server.js",
+  "scripts": {
+    "dev": "nodemon --config nodemon.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Homobastum/sapoto-api"
+  },
+  "author": "Mathieu GONTHIER",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.27",
+    "mongoose-unique-validator": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.7",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/mongoose": "^5.7.35",
+    "@types/mongoose-unique-validator": "^1.0.4",
+    "@types/node": "^14.0.27"
+  }
+}
