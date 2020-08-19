@@ -7,8 +7,11 @@ exports.Serveur = void 0;
 var express_1 = __importDefault(require("express"));
 var body_parser_1 = __importDefault(require("body-parser"));
 var cors_1 = __importDefault(require("cors"));
-var mongoose_1 = __importDefault(require("mongoose"));
-var UserService_1 = require("./services/UserService");
+var UserService_1 = require("./services/user/UserService");
+var SupportService_1 = require("./services/support/SupportService");
+/**
+ * Classe pour démarrer un serveur HTTP sur le port souhaité
+ */
 var Serveur = /** @class */ (function () {
     /**
      * Constructeur de la classe Serveur
@@ -25,24 +28,24 @@ var Serveur = /** @class */ (function () {
      */
     Serveur.prototype.creer = function () {
         var app = express_1.default();
-        /* Middlewares */
-        app.use(body_parser_1.default.json());
-        app.use(cors_1.default());
-        /* Connexion à MongoDB */
-        var uri = 'mongodb+srv://Homobastum:sloiieOs6O4a3ds0@hb-lab.iajpl.mongodb.net/sample_mflix?retryWrites=true&w=majority';
-        mongoose_1.default.connect(uri, function (err) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log('Connexion à MongoDB réussie.');
-            }
+        /* Middlewares express (applicatifs) */
+        // Parser JSON
+        app.use(body_parser_1.default.json(), function (req, res, next) {
+            next();
+        });
+        // Autoriser le Cross-Origin Resource Sharing
+        app.use(cors_1.default(), function (req, res, next) {
+            next();
         });
         /* API */
-        app.get('/', function (req, res) {
-            res.send('API REST');
+        // Point d'entrée
+        app.get("/", function (req, res, next) {
+            res.send("TEST API REST");
+            next();
         });
+        // Services
         var userService = new UserService_1.UserService(app);
+        var supportService = new SupportService_1.SupportService(app);
         return app;
     };
     /**
